@@ -1,21 +1,23 @@
+//define entry point of the app and the output filename which can be any name and complete path to o/p file
+//specify the babel loader, test says to include all files in the project ending with .js to include in babel and exclude only node_module filder
+
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'; 
 
-if (process.env.NODE_ENV === 'test') {
+if(process.env.NODE_ENV==='test'){
   require('dotenv').config({ path: '.env.test' });
-} else if (process.env.NODE_ENV === 'development') {
+}else if(process.env.NODE_ENV==='development'){
   require('dotenv').config({ path: '.env.development' });
 }
 
-module.exports = (env) => {
-  const isProduction = env === 'production';
-  const CSSExtract = new ExtractTextPlugin('styles.css');
-
+module.exports = (env)=>{
+  const isProduction = env === "production";
+  const CSSExtract = new ExtractTextPlugin('styles.css'); 
   return {
-    entry: ['babel-polyfill', './src/app.js'],
+    entry: './src/app.js',
     output: {
       path: path.join(__dirname, 'public', 'dist'),
       filename: 'bundle.js'
@@ -26,18 +28,18 @@ module.exports = (env) => {
         test: /\.js$/,
         exclude: /node_modules/
       }, {
-        test: /\.s?css$/,
+        test: /\.s?css$/, //include both scss and css
         use: CSSExtract.extract({
           use: [
             {
-              loader: 'css-loader',
+              loader : 'css-loader',
               options: {
                 sourceMap: true
               }
             },
             {
-              loader: 'sass-loader',
-              options: {
+              loader:'sass-loader',
+              options:{
                 sourceMap: true
               }
             }
@@ -56,11 +58,11 @@ module.exports = (env) => {
         'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
       })
     ],
-    devtool: isProduction ? 'source-map' : 'inline-source-map',
-    devServer: {
+    devtool: isProduction? 'source-map' : 'inline-source-map',
+    devServer:{
       contentBase: path.join(__dirname, 'public'),
-      historyApiFallback: true,
+      historyApiFallback: true,  //if encouters 404, redirect to index.html
       publicPath: '/dist/'
     }
-  };
-};
+  }
+}

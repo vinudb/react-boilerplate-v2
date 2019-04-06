@@ -3,3 +3,55 @@
   padding: 0 $m-size;
   max-width: 80rem;
 }
+
+.parent-container{
+  max-width: 80rem;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.child-container{
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid $blue;
+  border-radius: 5px;
+}
+
+//desktop specific
+@media (min-width: 45rem){
+  .child-container{
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid $blue;
+    border-radius: 5px;
+  }
+
+  .parent-container{
+    max-width: 80rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 25px;
+  }
+}
+
+.buttons-container{
+  width: 100%;
+}
+
+.counter-container{
+  text-align: center;
+  font-size: 100px;
+  margin: 0;
+  color: grey;
+}
+
+.input-container{
+  border: none;
+  border-bottom: 1px solid $pink;
+  text-align: center;
+  width: 100%;
+  color: grey;
+  font-size: 2.8rem;
+  border-radius: 5px;
+}

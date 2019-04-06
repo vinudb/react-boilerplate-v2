@@ -1,8 +1,9 @@
 import React from 'react';
+import Ticker from '../components/Ticker';
 
 const DashboardPage = () => (
   <div>
-    Dashboard page content
+    <Ticker />
   </div>
 );
 

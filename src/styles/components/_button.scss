@@ -10,6 +10,24 @@
   text-decoration: none;
 }
 
+.button-panel{
+  background: $blue;
+  border: none;
+  color: white;
+  display: inline-block;
+  font-size: $font-size-large;
+  font-weight: 300;
+  line-height: 1;
+  padding: $s-size;
+  text-decoration: none;
+  width: 33.3%;
+  height: 100px;
+}
+
+.button--reset {
+  background: $pink;
+}
+
 .button--link {
   background: none;
 }
